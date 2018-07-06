@@ -1,0 +1,22 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: gite-qwazerty-eu
+  namespace: default
+spec:
+  secretName: gite-qwazerty-eu-tls
+  issuerRef:
+    name: letsencrypt-prod
+  commonName: gite.qwazerty.eu
+  dnsNames:
+  - gite.qwazerty.eu
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - gite.qwazerty.eu
+    - http01:
+        ingress: gite.qwazerty.eu
+      domains:
+      - gite.qwazerty.eu
